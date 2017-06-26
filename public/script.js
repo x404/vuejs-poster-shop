@@ -13,7 +13,13 @@ new Vue({
 		addItem: function(index){
 			console.log(this.items[index]);
 			this.total += 9.99;
-			this.cart.push(this.items[index]);
+			var item = this.items[index];
+
+			this.cart.push({
+				title: item.title,
+				qty: 1
+				// this.items[index]
+			});
 		}
 	}
 });
