@@ -40,7 +40,7 @@ new Vue({
 			}
 		},
 		inc : function(item){
-			// console.log('inc')
+			console.log(item);
 			item.qty++;
 			this.total += PRICE;
 		},
@@ -49,10 +49,10 @@ new Vue({
 			item.qty--;
 			this.total -= PRICE;
 
-			if (item.qty <= 0){
-				for (var i = 0; i < this.cart.length; i++){
-					if (this.cart[i].id === item.id){
-						this.cart.splice(i, 1);
+			if (item.qty <= 0){ // если количество станет = 0
+				for (var i = 0; i < this.cart.length; i++){ // перебираем корзину
+					if (this.cart[i].id === item.id){ // если элемент в корзине совпал с элементом на который нажали 
+						this.cart.splice(i, 1); // удаляем этот элемент
 						break;
 					}
 				}
