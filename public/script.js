@@ -1,3 +1,5 @@
+var PRICE = 9.99;
+
 new Vue({
 	el: '#app',
 	data: {
@@ -11,24 +13,28 @@ new Vue({
 	},
 	methods : {
 		addItem: function(index){
-			// console.log(this.items[index]);
-			this.total += 9.99;
+			// console.log(this);
+			this.total += PRICE;
+
+
 			var item = this.items[index];
 			var found = false;
 
 
-			for (var i = 0; i < this.cart.length; i++){
-				if (this.cart[i].id === item.id){
+			for (var i = 0; i < this.cart.length; i++){ // перебираем всю! корзину
+				if (this.cart[i].id === item.id){ // если нашли товар, на который кликнули то плюсуем 1 в этой ячейчке
 					found = true;
 					this.cart[i].qty++;
 				}
+			console.log(this.cart[i].qty);
 			}
-			if (!found){
+
+			if (!found){ // если нажатого товара в корзине нет , то добавляем в корзину 1 товар
 				this.cart.push({
 					id : item.id, 
 					title: item.title,
-					qty: 1
-					// this.items[index]
+					qty: 1,
+					price: PRICE
 				});				
 			}
 		}
