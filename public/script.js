@@ -25,8 +25,9 @@ new Vue({
 				if (this.cart[i].id === item.id){ // если нашли товар, на который кликнули то плюсуем 1 в этой ячейчке
 					found = true;
 					this.cart[i].qty++;
+					break;
 				}
-			console.log(this.cart[i].qty);
+			// console.log(this.cart[i].qty);
 			}
 
 			if (!found){ // если нажатого товара в корзине нет , то добавляем в корзину 1 товар
@@ -37,7 +38,26 @@ new Vue({
 					price: PRICE
 				});				
 			}
-		}
+		},
+		inc : function(item){
+			// console.log('inc')
+			item.qty++;
+			this.total += PRICE;
+		},
+		dec : function(item){
+			// console.log('dec')
+			item.qty--;
+			this.total -= PRICE;
+
+			if (item.qty <= 0){
+				for (var i = 0; i < this.cart.length; i++){
+					if (this.cart[i].id === item.id){
+						this.cart.splice(i, 1);
+						break;
+					}
+				}
+			}
+		},
 	},
 	filters : {
 		currency: function(price){
