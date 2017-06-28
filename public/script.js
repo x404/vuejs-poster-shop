@@ -15,6 +15,9 @@ new Vue({
 		price: PRICE
 	},
 	methods : { 
+		appendItems: function(){
+
+		},
 		onSubmit: function(){
 			this.items = [];
 			this.loading = true;
@@ -80,14 +83,17 @@ new Vue({
 		}
 	},
 	mounted: function(){ // нажатие на кнопку Поиск  перед выводом страницы 
-		this.onSubmit()
+		this.onSubmit();
+
+	var vueInstance = this;
+	var elem = document.getElementById('product-list-bottom');
+	var watcher = scrollMonitor.create(elem);
+	watcher.enterViewport(function(){
+		vueInstance.appendItems()
+	});
+
 	}
 });
 
 // console.log(scrollMonitor);
 
-var elem = document.getElementById('product-list-bottom');
-var watcher = scrollMonitor.create(elem);
-watcher.enterViewport(function(){
-	console.log('enterViewport');
-});
