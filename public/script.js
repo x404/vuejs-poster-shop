@@ -13,6 +13,7 @@ new Vue({
 			// console.log(this.$http);
 			this.$http.get('/search/'.concat(this.search))
 			.then(function(res){
+				
 				this.items = res.data;
 			});
 		},
