@@ -9,9 +9,13 @@ new Vue({
 			{ id: 2, title : 'Item 2' },
 			{ id: 3, title : 'Item 3' }
 		],
-		cart: []
+		cart: [],
+		search: ''
 	},
 	methods : {
+		onSubmit: function(){
+			console.log(this.search);
+		},
 		addItem: function(index){
 			// console.log(this);
 			this.total += PRICE;
@@ -57,7 +61,8 @@ new Vue({
 					}
 				}
 			}
-		},
+		}
+
 	},
 	filters : {
 		currency: function(price){
