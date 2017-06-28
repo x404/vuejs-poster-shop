@@ -12,9 +12,13 @@ new Vue({
 		cart: [],
 		search: ''
 	},
-	methods : {
+	methods : { 
 		onSubmit: function(){
-			console.log(this.search);
+			// console.log(this.$http);
+			this.$http.get('/search/'.concat(this.search))
+			.then(function(res){
+				console.log(res);
+			});
 		},
 		addItem: function(index){
 			// console.log(this);
