@@ -15,7 +15,7 @@ new Vue({
 		price: PRICE
 	},
 	methods : { 
-		appendItems: function(){
+		appendItems: function(){ // добавление продуктов при прокрутке
 			if (this.items.length < this.results.length){
 				var append = this.results.slice(this.items.length, this.items.length + LOAD_NUM);
 				this.items = this.items.concat(append);
@@ -92,9 +92,8 @@ new Vue({
 		var vueInstance = this;
 		var elem = document.getElementById('product-list-bottom');
 		var watcher = scrollMonitor.create(elem);
-		watcher.enterViewport(function(){
-		vueInstance.appendItems();
-		console.log("!");
+		watcher.enterViewport(function(){ // при достижении нижнего элемента вызываем метод appendItems
+			vueInstance.appendItems();
 	});
 
 	}
